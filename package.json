@@ -5,11 +5,12 @@
   "main": "src/app/server.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "format": "prettier --write ."
-  },
+  "dev": "nodemon src/server.js",
+  "start": "node src/server.js",
+  "lint": "eslint .",
+  "lint:fix": "eslint . --fix",
+  "format": "prettier . --write"
+},
   "dependencies": {
     "express": "^4.18.2"
   },

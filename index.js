@@ -1,5 +1,12 @@
-const x = 10
+const nome = 'Daniel';
+const idade = 25;
 
-if (x ===10) {
-  console.log("teste")
+function apresentar(nome, idade) {
+  if (nome === 'Daniel') {
+    console.log('Olá ' + nome + ' você tem ' + idade + ' anos');
+  } else {
+    console.log('Usuário diferente');
+  }
 }
+
+apresentar(nome, idade);
