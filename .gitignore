@@ -1,0 +1,23 @@
+# Dependências
+node_modules/
+
+# Build
+dist/
+build/
+
+# Ambiente
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# VSCode
+.vscode/
+
+# Sistema
+.DS_Store
+
+# Coverage
+coverage/
