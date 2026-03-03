@@ -1,27 +1,27 @@
 import Sequelize, { Model } from "sequelize";
 
-class Customer extends Model {
+class Contact extends Model {
   static init(sequelize) {
     super.init(
       {
         name: Sequelize.STRING,
         email: Sequelize.STRING,
-        status: Sequelize.ENUM("ACTIVE", "ARCHIVED"),
+        status: Sequelize.ENUM("ACTIVE", "INACTIVE", "ARCHIVED"),
       },
       {
         sequelize,
-        tableName: "customers",
+        tableName: "contacts",
         underscored: true,
       }
     );
   }
 
   static associate(models) {
-    this.hasMany(models.Contact, {
+    this.belongsTo(models.Customer, {
       foreignKey: "customer_id",
-      as: "contacts",
+      as: "customer",
     });
   }
 }
 
-export default Customer;
+export default Contact;
