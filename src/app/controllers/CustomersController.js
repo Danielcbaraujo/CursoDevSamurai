@@ -1,3 +1,7 @@
+import Customer from "../models/Customer";
+
+
+
 class CustomersController {
   constructor() {
     this.customers = [

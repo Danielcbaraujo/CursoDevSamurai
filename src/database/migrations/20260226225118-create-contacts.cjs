@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('customers', {
+    await queryInterface.createTable('contacts', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -37,11 +37,20 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
         defaultValue: Sequelize.literal("CURRENT_TIMESTAMP")
+      },
+
+      customer_id: {
+        type: Sequelize.INTEGER,
+        references: {model: "customers", key: "id"},
+        onUpdate:"CASCADE",
+        onDelete: "CASCADE",
+        allowNull: false,
+
       }
     });
   },
 
   down: async (queryInterface) => {
-    await queryInterface.dropTable('customers');
+    await queryInterface.dropTable('contacts');
   }
 };
