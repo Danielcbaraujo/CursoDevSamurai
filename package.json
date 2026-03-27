@@ -2,7 +2,7 @@
   "name": "dominando-nodejs",
   "version": "1.0.0",
   "description": "Projeto de estudo Node.js com Express",
-  "main": "src/app/server.js",
+  "main": "src/server.js",
   "type": "module",
   "scripts": {
     "dev": "nodemon src/server.js",
@@ -16,7 +16,8 @@
     "pg": "^8.18.0",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.7",
-    "sequelize-cli": "^6.6.5"
+    "sequelize-cli": "^6.6.5",
+    "yup": "^1.7.1"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

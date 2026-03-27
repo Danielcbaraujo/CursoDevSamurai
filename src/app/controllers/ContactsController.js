@@ -1,14 +1,15 @@
-import Customer from "../models/Customer.js";
+import Contact from "../models/Contact.js";
 import * as Yup from "yup";
 
-class CustomersController {
+
+class  ContactsController {
 
   async index(req, res) {
-    const customers = await Customer.findAll({
+    const contact = await Contact.findAll({
       limit: 1000
     });
 
-    return res.json(customers);
+    return res.json(contact);
   }
 
   async show(req, res) {
@@ -25,13 +26,13 @@ class CustomersController {
 
     const { id } = req.params;
 
-    const customer = await Customer.findByPk(id);
+    const contact = await Contact.findByPk(id);
 
-    if (!customer) {
+    if (!contact) {
       return res.status(404).json({ error: "Customer not found" });
     }
 
-    return res.json(customer);
+    return res.json(contact);
   }
 
 async create(req, res) {
@@ -46,13 +47,13 @@ async create(req, res) {
 
     const { name, email, status } = req.body;
 
-    const customer = await Customer.create({
+    const contact = await Contact.create({
       name,
       email,
       status
     });
 
-    return res.status(201).json(customer);
+    return res.status(201).json(contact);
 
   } catch (err) {
     console.log(err); // 🔥 MOSTRA O ERRO REAL
@@ -85,9 +86,9 @@ async create(req, res) {
 
     const { id } = req.params;
 
-    const customer = await Customer.findByPk(id);
+    const contact = await Contact.findByPk(id);
 
-    if (!customer) {
+    if (!contact) {
       return res.status(404).json({
         error: "Customer not found"
       });
@@ -95,13 +96,13 @@ async create(req, res) {
 
     const { name, email, status } = req.body;
 
-    await customer.update({
+    await contact.update({
       name,
       email,
       status
     });
 
-    return res.json(customer);
+    return res.json(contact);
   }
 
   async destroy(req, res) {
@@ -118,15 +119,15 @@ async create(req, res) {
 
     const { id } = req.params;
 
-    const customer = await Customer.findByPk(id);
+    const contact = await Contact.findByPk(id);
 
-    if (!customer) {
+    if (!contact) {
       return res.status(404).json({
         error: "Customer not found"
       });
     }
 
-    await customer.destroy();
+    await contact.destroy();
 
     return res.json({
       message: "Customer deleted successfully"
@@ -134,4 +135,4 @@ async create(req, res) {
   }
 }
 
-export default new CustomersController();
+export default new ContactsController();
