@@ -4,9 +4,26 @@ class Contact extends Model {
   static init(sequelize) {
     super.init(
       {
-        name: Sequelize.STRING,
-        email: Sequelize.STRING,
-        status: Sequelize.ENUM("ACTIVE", "INACTIVE", "ARCHIVED"),
+        id: {
+          type: Sequelize.INTEGER,
+          primaryKey: true,
+          autoIncrement: true,
+        },
+        name: {
+          type: Sequelize.STRING,
+          allowNull: false,
+        },
+        email: {
+          type: Sequelize.STRING,
+          allowNull: false,
+          validate: {
+            isEmail: true,
+          },
+        },
+        status: {
+          type: Sequelize.ENUM("ACTIVE", "INACTIVE", "ARCHIVED"),
+          defaultValue: "ACTIVE",
+        },
       },
       {
         sequelize,
@@ -20,6 +37,7 @@ class Contact extends Model {
     this.belongsTo(models.Customer, {
       foreignKey: "customer_id",
       as: "customer",
+      onDelete: "CASCADE",
     });
   }
 }

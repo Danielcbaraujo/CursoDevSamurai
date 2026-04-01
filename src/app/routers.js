@@ -1,12 +1,40 @@
-import { Router } from 'express';
-import customers from './controllers/CustomersController.js';
+import { Router } from "express";
 
-const routes = Router();
+import CustomersController from "./controllers/CustomersController.js";
+import ContactsController from "./controllers/ContactsController.js";
+import UsersController from "./controllers/UsersController.js";
 
-routes.get('/customers', customers.index);
-routes.get('/customers/:id', customers.show);
-routes.post('/customers', customers.create);
-routes.put('/customers/:id', customers.update);
-routes.delete('/customers/:id', customers.destroy);
+const routes = new Router();
+
+
+// =========================
+// 📌 CUSTOMERS
+// =========================
+routes.get("/customers", CustomersController.index);
+routes.get("/customers/:id", CustomersController.show);
+routes.post("/customers", CustomersController.create);
+routes.put("/customers/:id", CustomersController.update);
+routes.delete("/customers/:id", CustomersController.destroy);
+
+
+// =========================
+// 📌 CONTACTS (NESTED)
+// =========================
+routes.get("/customers/:customerId/contacts", ContactsController.index);
+routes.get("/customers/:customerId/contacts/:id", ContactsController.show);
+routes.post("/customers/:customerId/contacts", ContactsController.create);
+routes.put("/customers/:customerId/contacts/:id", ContactsController.update);
+routes.delete("/customers/:customerId/contacts/:id", ContactsController.destroy);
+
+
+// =========================
+// 📌 USERS
+// =========================
+routes.get("/users", UsersController.index);
+routes.get("/users/:id", UsersController.show);
+routes.post("/users", UsersController.create);
+routes.put("/users/:id", UsersController.update);
+routes.delete("/users/:id", UsersController.destroy);
+
 
 export default routes;
