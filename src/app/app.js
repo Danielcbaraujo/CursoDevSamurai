@@ -1,7 +1,8 @@
 import express from 'express';
 import routes from './routers.js';
 import "../database/index.js";
-
+import authMiddleware from './app/middlewares/auth.js'
+import auth from './middlewares/auth.js';
 class App {
   constructor() {
     this.server = express();
@@ -11,6 +12,8 @@ class App {
 
   middlewares() {
     this.server.use(express.json());
+    this.server.use(express.urlencoded({extended:false}));
+    this.server.use(authMiddleware);
   }
 
   routes() {
