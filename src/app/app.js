@@ -1,8 +1,8 @@
 import express from 'express';
 import routes from './routers.js';
 import "../database/index.js";
-import authMiddleware from './app/middlewares/auth.js'
-import auth from './middlewares/auth.js';
+import authMiddleware from "./middlewares/auth.js";
+
 class App {
   constructor() {
     this.server = express();
